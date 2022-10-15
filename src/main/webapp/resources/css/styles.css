@@ -1,0 +1,152 @@
+:root {
+	--bs-enable-rounded: true;
+	--bs-enable-smooth-scroll: true;
+	--primary-bg: var(--bs-gray-800);
+	--text-grey: #F5F5F5;
+}
+
+body {
+	height: 100vh;
+	scroll-behavior: var(--bs-enable-smooth-scroll) !important;
+}
+
+input, .btn {
+	border-radius: var(--bs-enable-rounded) !important;
+}
+
+/* Navbar */
+nav {
+	background-color: var(--primary-bg) !important;
+}
+
+.container-fluid {
+	background-color: var(--primary-bg) !important;
+}
+
+.clear {
+	visibility: hidden;
+}
+
+main {
+	margin-bottom: 2em;
+}
+
+/* Jumbotron */
+.jumbotron {
+	color: #fff;
+	padding: 1.5em 0;
+}
+
+.jumbotron h1 {
+	font-size: 4rem;
+	font-weight: 300;
+}
+
+.jumbotron p {
+	margin-bottom: 2em;
+}
+
+/* Blog Post */
+.blog-post {
+	width: 95%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin: 0 auto;
+	row-gap : 2em;
+}
+
+.card {
+	border-radius: var(--bs-enable-rounded) !important;
+}
+
+.card a {
+	color: #fff;
+	background-color: var(--primary-bg) !important;
+}
+
+.card a:hover {
+	background-color: #fff !important;
+	color: var(--primary-bg) !important;
+	border: 1px solid var(--primary-bg) !important;
+}
+
+.wrapper {
+	min-height: 90vh;
+	display: grid;
+	align-content: center;
+}
+
+.wrapper h1 {
+	color: #fff;
+	font-weight: 300;
+	margin-bottom: 0.5em;
+}
+
+/* Form */
+form .form-floating {
+	margin-bottom: 1.5em;
+}
+
+.comment {
+	color: var(--text-grey);
+	text-decoration: none;
+	display: block;
+}
+
+.comment:hover {
+	color: var(--bs-white);
+}
+
+form button {
+	margin: 1em 0; 
+}
+
+/* Footer */
+footer {
+	text-align: center;
+	color: var(--bs-white);
+	background-color: var(--primary-bg);
+	padding: 1em 0;
+}
+
+/* Media Queries */
+@media (min-width: 768px ) {
+	.banner-background {
+		clip-path: polygon(30% 0%, 70% 0%, 100% 0, 100% 79%, 68% 76%, 29% 86%, 0 81%, 0 0);
+	}
+	
+	.wrapper {
+		width: 40%;
+		margin: 0 auto;
+	}
+	
+	.clear {
+   		margin: 3em;
+	}
+	
+
+	.jumbotron {
+		width: 70%;
+		margin: 0 auto;
+	}
+	
+	.blog-post {
+		width: 85%;
+		display: grid;
+		grid-template: auto / repeat(2, 1fr);
+		gap: 2em;
+	}
+	
+	.rows {
+	    display: grid;
+	    grid-template-columns: repeat(2, 1fr);
+	    column-gap: 1em;
+	}	
+	
+	.col {
+		grid-column: 1/-1;
+	}
+}
+
+
