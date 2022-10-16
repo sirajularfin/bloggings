@@ -1,3 +1,9 @@
+<%@page import="com.blog.files.entities.User"%>
+<%@page errorPage="errorPage.jsp" %>
+<% 
+	User user = (User)session.getAttribute("activeUser");
+%>
+
 <nav class="navbar navbar-expand-lg navbar-dark">
 	<div class="container-fluid">
 		<span class="navbar-brand"> Bloggings </span>
@@ -19,12 +25,18 @@
 				</li>
 			</ul>
 			<ul class="navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="login.jsp">Login</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="register.jsp">Register</a>
-				</li>
+				<% if (user == null) { %>
+					<li class="nav-item">
+						<a class="nav-link" href="login.jsp">Login</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="register.jsp">Register</a>
+					</li>
+				<% } else { %>
+					<li class="nav-item">
+						<a class="nav-link" href="logout?activeUser=<%=user.getId()%>">Logout</a>
+					</li>
+				<% } %>
 			</ul>
 		</div>
 	</div>

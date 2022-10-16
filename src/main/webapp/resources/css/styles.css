@@ -110,6 +110,23 @@ footer {
 	padding: 1em 0;
 }
 
+/* Error 404 */
+#errorPage{
+	width: 45%;
+	margin: 0 auto;
+}
+
+#errorPage img {
+	padding: 2.5em 0;
+	width: 100%;
+}
+
+#errorPage p {
+	text-align: center;
+	font-size: 2.5rem;
+	font-weight: 300;
+}
+
 /* Media Queries */
 @media (min-width: 768px ) {
 	.banner-background {

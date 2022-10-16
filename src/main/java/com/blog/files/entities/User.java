@@ -1,9 +1,14 @@
-package com.blog.files.entitties;
+package com.blog.files.entities;
+
+import java.sql.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.NaturalId;
 
 @Entity
 public class User {
@@ -11,11 +16,24 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
     private String firstName;
+
     private String lastName;
+
     private String dob;
+
+    @NaturalId
     private String email;
+
     private String password;
+
+    private Boolean loginStatus = false;
+
+    private String profile = "NULL";
+
+    @CreationTimestamp
+    private Date creationTime;
 
     public User() {
 	super();
@@ -78,10 +96,34 @@ public class User {
 	this.password = password;
     }
 
+    public Boolean getLoginStatus() {
+	return loginStatus;
+    }
+
+    public void setLoginStatus(Boolean loginStatus) {
+	this.loginStatus = loginStatus;
+    }
+
+    public String getProfile() {
+	return profile;
+    }
+
+    public void setProfile(String profile) {
+	this.profile = profile;
+    }
+
+    public Date getCreationTime() {
+	return creationTime;
+    }
+
+    public void setCreationTime(Date creationTime) {
+	this.creationTime = creationTime;
+    }
+
     @Override
     public String toString() {
 	return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob + ", email="
-		+ email + ", password=" + password + "]";
+		+ email + ", password=" + password + ", loginStatus=" + loginStatus + ", profile=" + profile + "]";
     }
 
     public Boolean validate() {

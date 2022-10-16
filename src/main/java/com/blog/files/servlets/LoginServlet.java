@@ -7,36 +7,42 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.blog.files.dao.UserDao;
 import com.blog.files.entities.User;
 
-@WebServlet("/register")
-public class RegisterServlet extends HttpServlet {
+@WebServlet("/login")
+public class LoginServlet extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
     private UserDao dao;
 
-    public RegisterServlet() {
+    public LoginServlet() {
 	dao = new UserDao();
     }
 
     @Override
-    public void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-
-	String firstName = req.getParameter("firstName");
-	String lastName = req.getParameter("lastName");
-	String dob = req.getParameter("dob");
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	String email = req.getParameter("email");
 	String password = req.getParameter("password");
 
-	User user = new User(firstName, lastName, dob, email, password);
-	if (!user.validate()) {
-	    System.out.println("INTERNAL SERVER ERROR");
+	User user = dao.getUserByEmailAndPassword(email, password);
+
+	if (user == null) {
+	    // Login Failed
+	    System.out.println("Bad Credentials");
 	    return;
 	}
+
+	// Login Success
 	user.setLoginStatus(true);
 	dao.saveOrUpdateUser(user);
-	res.sendRedirect("profile.jsp");
+	HttpSession session = req.getSession();
+	session.setAttribute("activeUser", user);
+
+	// On Login Success, redirecting to Profile page
+	resp.sendRedirect("profile.jsp");
+
     }
 }

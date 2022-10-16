@@ -13,7 +13,7 @@
 	<main class="container-fluid banner-background">
 		<div class="wrapper">
 			<h1>Login</h1>
-			<form>
+			<form action="login" method = "POST">
 				<div class="form-floating rows">
 					<input type="email" class="form-control col" name="email" placeholder="Email"> 
 					<label>Email address</label>

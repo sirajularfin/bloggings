@@ -13,7 +13,7 @@
 	<main class="container-fluid banner-background">
 		<div class="wrapper">
 			<h1>Register an Account</h1>
-			<form id="registration-form" action="register" method="POST">
+			<form action="register" method="POST">
 				<div class="rows">
 					<div class="form-floating">
 						<input type="text" class="form-control" name="firstName" placeholder="First Name"> 
