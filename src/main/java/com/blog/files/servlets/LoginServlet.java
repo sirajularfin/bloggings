@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.blog.files.dao.UserDao;
+import com.blog.files.entities.Message;
 import com.blog.files.entities.User;
 
 @WebServlet("/login")
@@ -31,7 +32,11 @@ public class LoginServlet extends HttpServlet {
 
 	if (user == null) {
 	    // Login Failed
-	    System.out.println("Bad Credentials");
+	    Message msg = new Message("Bad Credentials, Please check your email and password.", "error",
+		    "alert-danger");
+	    HttpSession session = req.getSession();
+	    session.setAttribute("message", msg);
+	    resp.sendRedirect("login.jsp");
 	    return;
 	}
 
@@ -42,7 +47,7 @@ public class LoginServlet extends HttpServlet {
 	session.setAttribute("activeUser", user);
 
 	// On Login Success, redirecting to Profile page
-	resp.sendRedirect("profile.jsp");
+	resp.sendRedirect("dashboard.jsp");
 
     }
 }

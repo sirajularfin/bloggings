@@ -14,6 +14,26 @@ input, .btn {
 	border-radius: var(--bs-enable-rounded) !important;
 }
 
+/* Alert Message */
+.alert {
+	font-weight: 300; 
+	display: flex;
+    column-gap: 0.5em;
+    position: absolute;
+    top: 1em;
+    left: 1em;
+    z-index: 1;
+    animation: fade 4s ease-in;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fade {
+    to {
+    	visibility: hidden;
+    }
+}
+
+
 /* Navbar */
 nav {
 	background-color: var(--primary-bg) !important;
@@ -102,6 +122,15 @@ form button {
 	margin: 1em 0; 
 }
 
+/* Profile Modal */
+#profile-modal .modal-body img{
+	display: grid;
+	width: 30%;
+	margin: 1em auto;
+	border-radius: 50%;	
+}
+
+
 /* Footer */
 footer {
 	text-align: center;
@@ -111,19 +140,18 @@ footer {
 }
 
 /* Error 404 */
-#errorPage{
-	width: 45%;
-	margin: 0 auto;
+#error {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+#error img {
+	width: 90%;
+	margin: 4em 0;
 }
 
-#errorPage img {
-	padding: 2.5em 0;
-	width: 100%;
-}
-
-#errorPage p {
-	text-align: center;
-	font-size: 2.5rem;
+#error p {
+	font-size: 1.5rem;
 	font-weight: 300;
 }
 
@@ -164,6 +192,16 @@ footer {
 	.col {
 		grid-column: 1/-1;
 	}
+	
+	/* Error 404 */
+	#error img {
+		width: 45%;
+	}
+	
+	#error p {
+		font-size: 2.5rem;
+	}
+
 }
 
 

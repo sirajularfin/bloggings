@@ -13,10 +13,8 @@
 <!-- External CSS -->
 <link rel="stylesheet" type="text/css" href="resources/css/styles.css">
 </head>
-<body>
-	<div id="errorPage">
-		<img src="resources/asset/something_went_wrong.svg" alt="Error 404">
-		<p>Oops! Something went wrong :(</p>
-	</div>
+<body id="error">
+	<img src="resources/asset/something_went_wrong.svg" alt="Error 404">
+	<p>Oops! Something went wrong :(</p>
 </body>
 </html>

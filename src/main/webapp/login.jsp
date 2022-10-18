@@ -1,3 +1,4 @@
+<%@ include file="resources/jsp/alert.jsp"%>
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,11 +16,11 @@
 			<h1>Login</h1>
 			<form action="login" method = "POST">
 				<div class="form-floating rows">
-					<input type="email" class="form-control col" name="email" placeholder="Email"> 
+					<input type="email" class="form-control col" name="email" placeholder="Email" required> 
 					<label>Email address</label>
 				</div>
 				<div class="form-floating rows">
-					<input type="password" class="form-control col" name="password" placeholder="Password"> 
+					<input type="password" class="form-control col" name="password" placeholder="Password" required> 
 					<label>Password</label>
 				</div>
 				<a href="register.jsp" class="comment">Don't have an account? Register here</a>

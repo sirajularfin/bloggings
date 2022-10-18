@@ -27,7 +27,7 @@ public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 	HttpSession session = req.getSession();
-	Integer id = Integer.parseInt(req.getParameter("activeUser"));
+	Long id = Long.parseLong(req.getParameter("activeUserId"));
 	User user = dao.getUserById(id);
 	user.setLoginStatus(false);
 	dao.saveOrUpdateUser(user);

@@ -1,5 +1,5 @@
 <%@page import="com.blog.files.entities.User"%>
-<%@page errorPage="errorPage.jsp" %>
+<%@page errorPage="error.jsp" %>
 <% 
 	User user = (User)session.getAttribute("activeUser");
 %>
@@ -23,6 +23,7 @@
 				<li class="nav-item">
 					<a class="nav-link" href="#">Contact Us</a>
 				</li>
+		
 			</ul>
 			<ul class="navbar-nav">
 				<% if (user == null) { %>
@@ -34,7 +35,14 @@
 					</li>
 				<% } else { %>
 					<li class="nav-item">
-						<a class="nav-link" href="logout?activeUser=<%=user.getId()%>">Logout</a>
+						<a class="nav-link d-flex" href="#!" data-bs-toggle="modal" data-bs-target="#profile-modal">
+							<span class="material-icons pe-1">account_circle</span> 
+							<%= user.getFirstName() %> <%=user.getLastName() %></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link d-flex" href="logout?activeUserId=<%=user.getId()%>">
+						<span class="material-icons pe-1">logout</span>
+						Logout</a>
 					</li>
 				<% } %>
 			</ul>

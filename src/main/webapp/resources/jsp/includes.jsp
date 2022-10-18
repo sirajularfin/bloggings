@@ -17,6 +17,3 @@
 
 <!-- External CSS -->
 <link rel="stylesheet" type="text/css" href="resources/css/styles.css">
-
-<!-- External JavaScript -->
-<script type="text/javascript" src="resources/javascript/script.js"></script>

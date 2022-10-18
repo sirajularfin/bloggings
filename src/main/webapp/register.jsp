@@ -16,29 +16,29 @@
 			<form action="register" method="POST">
 				<div class="rows">
 					<div class="form-floating">
-						<input type="text" class="form-control" name="firstName" placeholder="First Name"> 
+						<input type="text" class="form-control" name="firstName" placeholder="First Name" required> 
 						<label>First Name</label>
 					</div>
 					<div class="form-floating">
-						<input type="text" class="form-control" name="lastName" placeholder="Last Name"> 
+						<input type="text" class="form-control" name="lastName" placeholder="Last Name" required> 
 						<label>Last Name</label>
 					</div>
 				</div>
 				<div class="form-floating rows">
-					<input type="date" class="form-control col" name="dob" placeholder="Date of Birth"> 
+					<input type="date" class="form-control col" name="dob" placeholder="Date of Birth" required> 
 					<label>Date of Birth</label>
 				</div>
 				<div class="form-floating rows">
-					<input type="email" class="form-control col" name="email" placeholder="Email"> 
+					<input type="email" class="form-control col" name="email" placeholder="Email" required> 
 					<label>Email address</label>
 				</div>
 				<div class="rows">
 					<div class="form-floating">
-						<input type="password" class="form-control" name="password" placeholder="Password">
+						<input type="password" class="form-control" name="password" placeholder="Password" required>
 						<label>Password</label>
 					</div>
 					<div class="form-floating">
-						<input type="password" class="form-control" name="passwordTwo" placeholder="Confirm Password">
+						<input type="password" class="form-control" name="retypePassword" placeholder="Confirm Password" required>
 						<label>Confirm Password</label>
 					</div>
 				</div>
