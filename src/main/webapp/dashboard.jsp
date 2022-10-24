@@ -1,3 +1,4 @@
+<%@ include file="resources/jsp/alert.jsp" %>
 <!doctype html>
 <html lang="en">
 <head>

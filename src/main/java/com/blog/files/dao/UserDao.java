@@ -30,35 +30,40 @@ public class UserDao implements Closeable {
 	return user;
     }
 
-    public void saveOrUpdateUser(User user) {
+    public boolean saveOrUpdateUser(User user) {
+	boolean flag = false;
 	try {
 	    trx = session.beginTransaction();
 	    session.saveOrUpdate(user);
 	    session.flush();
 	    session.clear();
 	    trx.commit();
+	    flag = true;
 	} catch (Exception e) {
 	    if (trx != null) {
 		trx.rollback();
 	    }
 	    e.printStackTrace();
 	}
+	return flag;
     }
 
-    public void deleteUser(User user) {
+    public boolean deleteUser(User user) {
+	boolean flag = false;
 	try {
 	    trx = session.beginTransaction();
 	    session.delete(user);
 	    session.flush();
 	    session.clear();
 	    trx.commit();
+	    flag = true;
 	} catch (Exception e) {
 	    if (trx != null) {
 		trx.rollback();
 	    }
 	    e.printStackTrace();
 	}
-
+	return flag;
     }
 
     @Override

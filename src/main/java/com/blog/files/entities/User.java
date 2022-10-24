@@ -23,7 +23,7 @@ public class User {
 
     private String dob;
 
-    @NaturalId
+    @NaturalId(mutable = true)
     private String email;
 
     private String password;

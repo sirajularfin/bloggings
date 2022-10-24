@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.blog.files.dao.UserDao;
+import com.blog.files.entities.Message;
 import com.blog.files.entities.User;
 
 @WebServlet("/logout")
@@ -33,7 +34,9 @@ public class LogoutServlet extends HttpServlet {
 	dao.saveOrUpdateUser(user);
 	session.removeAttribute("activeUser");
 
-	resp.sendRedirect("index.jsp");
+	Message msg = new Message("Logout successfully", "check_circle", "alert-success");
+	session.setAttribute("message", msg);
+	resp.sendRedirect("login.jsp");
     }
 
 }

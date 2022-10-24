@@ -1,5 +1,6 @@
 package com.blog.files.servlets;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -12,7 +13,9 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import com.blog.files.dao.UserDao;
+import com.blog.files.entities.Message;
 import com.blog.files.entities.User;
+import com.blog.files.helper.FileOperations;
 
 @MultipartConfig
 @WebServlet("/update-profile")
@@ -42,9 +45,27 @@ public class UpdateProfileServlet extends HttpServlet {
 	user.setDob(dob);
 	user.setEmail(email);
 	user.setPassword(password);
-	user.setProfile(imageName);
+	if (part.getSize() != 0L) {
+	    user.setProfile(imageName);
+	}
+	if (dao.saveOrUpdateUser(user)) {
+	    // Bloggings/src/main/webapp/resources/asset
+	    String path = req.getSession().getServletContext().getRealPath("/") + "src" + File.separator + "main"
+		    + File.separator + "webapp" + File.separator + "resources" + File.separator + "asset"
+		    + File.separator + user.getProfile();
+	    System.out.println(path);
+	    if (!FileOperations.deleteFile(path)) {
+		System.err.println("File deletion failed");
+	    }
+	    if (FileOperations.saveFile(part.getInputStream(), path)) {
+		Message msg = new Message("Profile updated successfully", "check_circle", "alert-success");
+		session.setAttribute("message", msg);
+		resp.sendRedirect("dashboard.jsp");
+		return;
+	    }
 
-	dao.saveOrUpdateUser(user);
+	}
+	System.err.println("Internal Server Error");
     }
 
 }
